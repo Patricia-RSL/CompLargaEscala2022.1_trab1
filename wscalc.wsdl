@@ -1,4 +1,4 @@
-<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost:8082/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="TempConverterEndpointService" targetNamespace="http://localhost:8082/wsdl">
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost:8082/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CelsiusConverterEndpointService" targetNamespace="http://localhost:8082/wsdl">
 <wsdl:types>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://localhost:8082/wsdl" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://localhost:8082/wsdl">
 <xs:complexType name="celsiusToFahrenheitRequest">
@@ -21,13 +21,13 @@
 <wsdl:message name="CelsiusToFahrenheitResponse">
 <wsdl:part element="tns:CelsiusToFahrenheitResponse" name="CelsiusToFahrenheitResponse"> </wsdl:part>
 </wsdl:message>
-<wsdl:portType name="TempConverterEndpoint">
+<wsdl:portType name="CelsiusConverterEndpoint">
 <wsdl:operation name="CelsiusToFahrenheit">
 <wsdl:input message="tns:CelsiusToFahrenheit" name="CelsiusToFahrenheit"> </wsdl:input>
 <wsdl:output message="tns:CelsiusToFahrenheitResponse" name="CelsiusToFahrenheitResponse"> </wsdl:output>
 </wsdl:operation>
 </wsdl:portType>
-<wsdl:binding name="TempConverterEndpointServiceSoapBinding" type="tns:TempConverterEndpoint">
+<wsdl:binding name="CelsiusConverterEndpointServiceSoapBinding" type="tns:CelsiusConverterEndpoint">
 <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 <wsdl:operation name="CelsiusToFahrenheit">
 <soap:operation soapAction="" style="document"/>
@@ -39,8 +39,8 @@
 </wsdl:output>
 </wsdl:operation>
 </wsdl:binding>
-<wsdl:service name="TempConverterEndpointService">
-<wsdl:port binding="tns:TempConverterEndpointServiceSoapBinding" name="TempConverterEndpointPort">
+<wsdl:service name="CelsiusConverterEndpointService">
+<wsdl:port binding="tns:CelsiusConverterEndpointServiceSoapBinding" name="CelsiusConverterEndpointPort">
 <soap:address location="http://localhost:8082/wsdl"/>
 </wsdl:port>
 </wsdl:service>

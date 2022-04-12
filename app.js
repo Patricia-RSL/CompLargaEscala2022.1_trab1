@@ -10,8 +10,8 @@ app.use(express.json());
 const port = process.env.PORT || 8082;
 
 var serviceObj = {
-  TempConverterEndpointService: {
-    TempConverterEndpointPort: {
+  CelsiusConverterEndpointService: {
+    CelsiusConverterEndpointPort: {
       CelsiusToFahrenheit : function(args) {
               var n = (args.celsius*1.8)+32;
               return { fahrenheit : n };
