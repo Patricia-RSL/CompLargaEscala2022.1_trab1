@@ -15,4 +15,17 @@ router.get('/consulta/:cep', function(req, res, next) {
   })
 });
 
+router.get('/wsdl/celsiusToFahrenheit/:celsius', function(req, res, next) {
+  var celsius = req.params.celsius;
+  var url = 'http://localhost:8082/wsdl?wsdl';
+  soap.createClient(url, function (err, client) {
+    console.log(client)
+    client.CelsiusToFahrenheit({celsius: celsius}, function(err, result) {
+        if(err) return console.log(err);
+        res.send(result)
+    })
+  })
+});
+
+
 module.exports = router;
