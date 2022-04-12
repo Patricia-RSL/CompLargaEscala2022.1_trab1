@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var soap = require('soap');
 var bodyParser = require('body-parser');
+const app = express();
+app.use(express.json());
+const port = process.env.PORT || 8082;
 
 var serviceObj = {
   TempConverterEndpointService: {
@@ -18,22 +21,12 @@ var serviceObj = {
 }
 var xml = require('fs').readFileSync('wscalc.wsdl', 'utf8');
 
-const app = express();
-
-const port = process.env.PORT || 8082;
-
-//app.use(bodyParser.raw({type: function(){return true;}, limit: '5mb'}));
-/*app.listen(port, () => {
-  console.log(`Server running on port ${port}`)
-  soap.listen(app, '/wsdl', serviceObj, xml, function(){
-    console.log('SOAP web service started on :' + port);
-  });
-});*/
-var server = app.listen(port, ()=>{
+var server = app.listen(port, ()=>{  
   var host = '127.0.0.1',
   port = server.address().port;
-  });
-  soap.listen(server,'/wsdl', serviceObj, xml)
+  console.log(`Listening on port: ${port}`);
+});
+soap.listen(server,'/wsdl', serviceObj, xml)
 
 app.get('/', (req, res) => res.send(`Computação em Larga Escala/2022.1 UFF. \n Para consultar um cep vá até localhost:${port}/consulta/seucep`));
 
